@@ -3,7 +3,7 @@ import { withLayout } from '../../utils/hoc';
 import fetch from 'node-fetch';
 
 function PostPage({ file_name }) {
-    const BlogContent = dynamic(() => import(`../posts-md/${file_name}`))
+    const BlogContent = dynamic(() => import(`../source-posts/${file_name}`))
     return <BlogContent />
 }
 

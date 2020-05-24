@@ -4,7 +4,7 @@ import theme from 'prism-react-renderer/themes/github'
 
 export default ({children, className}) => {
   const language = className.replace(/language-/, '')
-  console.log(language);
+  
   return (
     <Highlight {...defaultProps} code={children} language={language} theme={theme}>
       {({className, style, tokens, getLineProps, getTokenProps}) => (

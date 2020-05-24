@@ -8,10 +8,12 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
+import config from 'config';
 
 export default function() {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    const categories = config.get("visible_categories");
 
     return(
         <Navbar color="info" dark expand="md">
@@ -21,18 +23,11 @@ export default function() {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/posts?category=engineering">Engineering Mindset</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/posts?category=programming">Just Programming</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/posts?category=cooking">Cooking - Non Tech</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/posts?category=life">Think about Life</NavLink>
-            </NavItem>
+            {categories.map(ct => {
+              return <NavItem>
+                <NavLink href={"/posts?category="+ct}>{ct}</NavLink>
+              </NavItem>
+            })}
           </Nav>
         </Collapse>
       </Navbar>
