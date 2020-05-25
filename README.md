@@ -33,6 +33,9 @@ You may want to migration your old blogs (must be Markdown files, sorry) to the 
 
 ~~ Have Fun ~~
 
+<img src="./readme/demo-index.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="400" />
+
+<img src="./readme/demo-category.png" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="600" height="400" />
 
 ## TODO
 - wiki
