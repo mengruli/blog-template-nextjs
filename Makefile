@@ -12,13 +12,7 @@ CE := $(foreach exec,$(EXECUTABLES),\
 
 migration-script:
 	$(shell ./migration.sh)
-
-# build:	
-# 	@echo Buiding the blog app
-# 	source $(HOME)/.nvm/nvm.sh && \
-# 	cd blog && nvm use && \
-# 	npm install > /dev/null && npm run build > /dev/null
-
+	
 run: build startmysql
 	@echo Checking DB status...
 	db_port=$$(docker port blog-template-db) && \
