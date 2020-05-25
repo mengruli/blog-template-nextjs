@@ -13,11 +13,11 @@ CE := $(foreach exec,$(EXECUTABLES),\
 migration-script:
 	$(shell ./migration.sh)
 
-build:	
-	@echo Buiding the blog app
-	source $(HOME)/.nvm/nvm.sh && \
-	cd blog && nvm use && \
-	npm install > /dev/null && npm run build > /dev/null
+# build:	
+# 	@echo Buiding the blog app
+# 	source $(HOME)/.nvm/nvm.sh && \
+# 	cd blog && nvm use && \
+# 	npm install > /dev/null && npm run build > /dev/null
 
 run: build startmysql
 	@echo Checking DB status...
@@ -29,7 +29,7 @@ run: build startmysql
 	@echo DB is ready. Starting the web app now...
 	source $(HOME)/.nvm/nvm.sh && \
 	cd blog && nvm use && \
-	npm run start
+	npm run build && npm run start
 	
 
 startmysql: stopmysql migration-script
@@ -44,4 +44,3 @@ stopmysql:
 
 help:
 	@echo Comming soon
-

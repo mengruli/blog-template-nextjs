@@ -8,7 +8,7 @@ function listCategories(callback) {
         result.forEach(c => {
             ret[c.category_name] = c.category_name;
         });
-        callback(err, ret)
+        return callback(err, ret)
     })
 }
 
@@ -21,7 +21,7 @@ function findByCategory(category, offset, limit, callback) {
             `.replace('\n', ' ');
 
     return database.runQuery(query, function(err, result) {
-        callback(err, result)
+        return callback(err, result)
     })
 }
 

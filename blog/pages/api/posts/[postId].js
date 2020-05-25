@@ -7,7 +7,7 @@ function findById(id, callback) {
         if (result.length == 0) throw Error(`Post ${id} is not found`)
         const path = result[0].file_name;
 
-        callback(err, path);
+        return callback(err, path);
     })
 }
 

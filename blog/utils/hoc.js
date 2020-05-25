@@ -1,4 +1,4 @@
-import Layout from '../components/Layout'
+import Layout from '../components/Layout';
 
 function withLayout(WrappedComponent) {
     const wrapper = props => {

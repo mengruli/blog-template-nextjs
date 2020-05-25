@@ -1,19 +1,19 @@
 import mysql from 'mysql';
-import config from 'config';
+import config from '../utils/config';
 import pino from 'pino';
 
 let pool;
 let logger = pino();
-const dbConfig = config.get('db');
+const dbConfig = config["db"];
 
 let database = {
     getPool: function () {
       if (pool) return pool;
       pool = mysql.createPool({
-        host     : dbConfig.get("host"),
-        user     : dbConfig.get("username"),
-        password : dbConfig.get("password"),
-        database : dbConfig.get("database")
+        host     : dbConfig["host"],
+        user     : dbConfig["username"],
+        password : dbConfig["password"],
+        database : dbConfig["database"]
       });
 
       logger.info('New db connection pool is created')

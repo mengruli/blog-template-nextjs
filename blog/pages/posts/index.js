@@ -14,7 +14,7 @@ function PostsIndexPage({ category, posts }) {
             <ListGroup>
             {
                 posts.map(p => {
-                    return <ListGroupItem>
+                    return <ListGroupItem key={p.id}>
                         <a href={"posts/" + p.id}>{p.title}</a>
                     </ListGroupItem>
                 })

@@ -12,38 +12,16 @@ import {
     ListGroupItem
   } from 'reactstrap'
 import fetch from 'node-fetch';
+import config from '../utils/config';
 
 function IndexPage(props) {
     const [activeIndex, setActiveIndex] = useState(0)
     const [animating, setAnimating] = useState(false)
-    const categories = Object.keys(props)
+    const categories = Object.keys(config.visible_categories)//Object.keys(props)
 
-    const sites = [
-        {
-            title: "Thoughts on Software Enigineering",
-            description: "Click the background to access the site",
-            url: "https://system-design.graycat89.com",
-            background: "images/dsc-triangle.png"
-        },
-        {
-            title: "Talk is cheap, show me the code",
-            description: "Click the background to access the site",
-            url: "https://coding.graycat89.com",
-            background: "images/coding.png"
-        },
-        {
-            title: "She can code; She can cook; Are you hungry?",
-            description: "Click the background to access the site",
-            url: "https://cooking.graycat89.com",
-            background: "images/food.jpg"
-        },
-        {
-            title: "Thoughts on life",
-            url: "https://life.graycat89.com",
-            description: "Click the background to access the site",
-            background: "images/life.jpg"
-        }
-    ]
+    const sites = Object.entries(config.visible_categories).map((entry, index) => {
+        return entry[1];
+    })
 
     const next = () => {
         if (animating) return;
@@ -92,13 +70,13 @@ function IndexPage(props) {
             </Carousel>
             <div style={{marginTop: "1em"}}>
                 { categories.map(c => {
-                    return <Row>
+                    return <Row key={c}>
                         <Col>
                         <h3>{c}</h3>
                         <ListGroup>
                         {
                             props[c].map(p => {
-                                return <ListGroupItem>
+                                return <ListGroupItem key={p.id}>
                                     <a href={"posts/" + p.id}>{p.title}</a>
                                 </ListGroupItem>
                             })
@@ -121,4 +99,5 @@ export async function getServerSideProps(ctx) {
         props: json
     }
 }
+
 export default withLayout(IndexPage)
